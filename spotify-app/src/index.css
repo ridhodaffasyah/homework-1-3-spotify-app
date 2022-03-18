@@ -11,3 +11,132 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  font-family: sans-serif;
+  background-color: snow;
+}
+
+#app {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+form {
+  margin: auto;
+  background-color: white;
+}
+
+.input,
+.textarea {
+  width: calc(100% - 10px);
+  border: none;
+  color: black;
+  background-color: rgba(211, 211, 211, 0.418);
+  border-radius: 8px;
+  padding: 10px 0px 10px 10px;
+}
+
+.btn {
+  padding: 10px;
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: lightblue;
+}
+
+.btn:hover {
+  padding: 10px;
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: cornflowerblue;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  border: none;
+  box-shadow: 0px 0px 2px 0px grey;
+  border-radius: 8px;
+  padding: 10px 20px 30px 20px;
+  background-color: white;
+}
+
+.container-items {
+  width: 80%;
+  margin: auto;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px 30px 20px;
+}
+
+.song-pict {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.container-song {
+  margin: auto auto 15px auto;
+  padding: 10px 20px 5px 20px;
+  box-shadow: 0px 0px 2px 0px grey;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.song-detail {
+  display: inline-block;
+  margin: 0px 10px 0px 10px;
+}
+
+.song-detail > h2 {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.song-detail > p {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.container-items {
+  margin: 30px auto auto auto;
+  width: 80%;
+}
+
+.btn-add {
+  border: none;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  float: right;
+  padding: 10px 15px 10px 15px;
+  border-radius: 8px;
+  background-color: lightblue;
+}
+
+.btn-add:hover {
+  border: none;
+  font-size: 11px;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+  margin-top: 15px;
+  padding: 10px 15px 10px 15px;
+  border-radius: 8px;
+  background-color: cornflowerblue;
+}
+
