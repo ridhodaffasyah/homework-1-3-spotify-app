@@ -13,27 +13,36 @@ code {
 }
 
 body {
-  font-family: sans-serif;
-  background-color: snow;
+  font-family: poppins, sans-serif;
+  background-color: #282c34;
 }
 
 #app {
   text-align: center;
-  font-size: 16px;
-  font-weight: bolder;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-.title {
+#app > h1 > span {
+  color: lightblue;
+  margin-left: 5px;
+}
+
+/* .title {
   font-size: 16px;
   font-weight: bold;
-}
+  color: white;
+} */
 
-form {
+/* form {
   margin: auto;
   background-color: white;
-}
+} */
 
-.input,
+/* .input,
 .textarea {
   width: calc(100% - 10px);
   border: none;
@@ -41,9 +50,9 @@ form {
   background-color: rgba(211, 211, 211, 0.418);
   border-radius: 8px;
   padding: 10px 0px 10px 10px;
-}
+} */
 
-.btn {
+/* .btn {
   padding: 10px;
   width: 100%;
   margin-top: 20px;
@@ -63,9 +72,9 @@ form {
   border-radius: 8px;
   font-weight: bold;
   background-color: cornflowerblue;
-}
+} */
 
-.container {
+/* .container {
   width: 80%;
   margin: auto;
   border: none;
@@ -73,15 +82,7 @@ form {
   border-radius: 8px;
   padding: 10px 20px 30px 20px;
   background-color: white;
-}
-
-.container-items {
-  width: 80%;
-  margin: auto;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px 30px 20px;
-}
+} */
 
 .song-pict {
   width: 50px;
@@ -89,11 +90,13 @@ form {
 }
 
 .container-song {
+  display: flex;
   margin: auto auto 15px auto;
   padding: 10px 20px 5px 20px;
   box-shadow: 0px 0px 2px 0px grey;
-  border-radius: 8px;
-  background-color: white;
+  border-radius: 10px;
+  background-color: #616670;
+  justify-content: space-between;
 }
 
 .song-detail {
@@ -102,18 +105,25 @@ form {
 }
 
 .song-detail > h2 {
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 13px;
+  color:whitesmoke;
+  font-weight: 500;
 }
 
 .song-detail > p {
   font-size: 12px;
+  color:whitesmoke;
   font-weight: normal;
 }
 
 .container-items {
   margin: 30px auto auto auto;
-  width: 80%;
+  width: 50%;
+  text-align: left;
+}
+
+.btn-container {
+  margin-top: 10px;
 }
 
 .btn-add {
@@ -121,8 +131,6 @@ form {
   font-size: 11px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 15px;
-  float: right;
   padding: 10px 15px 10px 15px;
   border-radius: 8px;
   background-color: lightblue;
@@ -132,9 +140,7 @@ form {
   border: none;
   font-size: 11px;
   font-weight: bold;
-  float: right;
   cursor: pointer;
-  margin-top: 15px;
   padding: 10px 15px 10px 15px;
   border-radius: 8px;
   background-color: cornflowerblue;
