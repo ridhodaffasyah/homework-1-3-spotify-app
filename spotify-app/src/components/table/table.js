@@ -5,8 +5,7 @@ import data from '../../constant';
 function Table() {
 
     const track_loop = data.map((track,idx) => {
-        return (<Track key={idx} track_number={track.track_number} 
-        track_img={track.album.images[2].url} 
+        return (<Track key={idx} track_img={track.album.images[2].url} 
         track_name={track.name} 
         track_album={track.album.name} 
         track_artist={track.artists[0].name} 
@@ -18,12 +17,12 @@ function Table() {
             <table className='table'>
                 <thead className='table-head'>
                     <tr>
-                        <th className='no-track'>No Track</th>
                         <th> </th>
                         <th>Name</th>
                         <th>Album</th>
                         <th>Artist</th>
                         <th>Duration</th>
+                        <th className='no-track'></th>
                     </tr>
                 </thead>
                 {track_loop}
