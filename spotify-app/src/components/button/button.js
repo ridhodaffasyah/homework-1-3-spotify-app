@@ -1,10 +1,11 @@
 import React from 'react';
 
-function Button() {
+function Button({play}) {
+
     return (
         <>
             <div className='btn-container'>
-                <input className="btn-add" type="submit" value="Add to playlist" />
+                <a className="btn-add" href={play} target="_blank" rel="noreferrer">Play Music</a>
             </div>
         </>
     )

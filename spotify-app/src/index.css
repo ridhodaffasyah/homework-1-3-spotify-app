@@ -130,6 +130,7 @@ body {
   border: none;
   font-size: 11px;
   font-weight: bold;
+  color: white;
   cursor: pointer;
   padding: 10px 15px 10px 15px;
   border-radius: 8px;
@@ -141,6 +142,7 @@ body {
   font-size: 11px;
   font-weight: bold;
   cursor: pointer;
+  color: black;
   padding: 10px 15px 10px 15px;
   border-radius: 8px;
   background-color: cornflowerblue;
@@ -148,7 +150,7 @@ body {
 
 .table {
   margin: 50px auto;
-  width: 80%;
+  width: 85%;
   text-align: center;
   border: 1px solid white;
   border-radius: 10px;
@@ -157,12 +159,6 @@ body {
 
 .table-head {
   font-size: 18px;
-  
-}
-
-.no-track {
-  padding: 10px;
-  width: 10%;
 }
 
 .table-data {
@@ -184,4 +180,116 @@ th, td {
 
 .track-name {
   width: 29%;
+}
+
+.input {
+  width: 80%;
+  padding: 10px;
+}
+
+.search-input {
+  border: none;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding: 10px;
+  width: 40%;
+  color: black;
+}
+
+.no-track {
+  width: 15%;
+  color: white;
+}
+
+.search-input::placeholder {
+  border: none;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: 40%;
+  color: grey;
+  opacity: 0.6;
+}
+
+.search-input:focus {
+  border: none;
+  outline: none;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding: 10px;
+  width: 40%;
+  color: black;
+}
+
+.fa-solid {
+  color: black;
+}
+
+span {
+  color: rgb(105, 206, 240);
+  margin-left: 8px;
+}
+
+.search-button {
+  background-color: rgb(105, 206, 240);
+  border: none;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 9px 16px 10px 15px;
+  color: white;
+  font-size: 12.2px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: cornflowerblue;
+  border: none;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 10px 16px 10px 15px;
+  color: white;
+  font-size: 12.2px;
+  cursor: pointer;
+}
+
+login-page {
+  background-color: #1f1f1f;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.logo {
+  width: 30%;
+}
+
+.login-btn {
+  width: 150px;
+  padding: 10px 0px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #fefefe;
+  border-radius: 50px;
+  color: #1f1f1f;
+  font-weight: 600;
+  margin: 30px auto;
+}
+
+.login-btn:hover {
+  width: 150px;
+  padding: 10px 0px;
+  font-size: 16px;
+  text-align: center;
+  background-color: lightgreen;
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  margin: 30px auto;
+}
+
+a {
+  text-decoration: none;
 }

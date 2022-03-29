@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../button/button';
 
-function Track({track_img, track_name, track_album, track_artist, track_duration}) {
+function Track({track_img, track_name, track_album, track_artist, track_duration, play}) {
     return (
         <>
             <tbody className='table-data'>
@@ -11,7 +11,7 @@ function Track({track_img, track_name, track_album, track_artist, track_duration
                     <td>{track_album}</td>
                     <td>{track_artist}</td>
                     <td>{track_duration}</td>
-                    <td><Button/></td>
+                    <td><Button play={play}/></td>
                 </tr>
             </tbody>
         </>
