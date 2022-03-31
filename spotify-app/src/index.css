@@ -220,9 +220,36 @@ login-page {
   text-align: center;
   background-color: #fefefe;
   border-radius: 50px;
+  cursor: pointer;
   color: #1f1f1f;
   font-weight: 600;
   margin: 30px auto;
+}
+
+.logout-btn {
+  width: 150px;
+  padding: 10px 0px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #fefefe;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #1f1f1f;
+  font-weight: 600;
+  margin: 30px 50px auto auto;
+}
+
+.logout-btn:hover {
+  width: 150px;
+  padding: 10px 0px;
+  font-size: 16px;
+  text-align: center;
+  background-color: lightgreen;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  margin: 30px 50px auto auto;
 }
 
 .login-btn:hover {
@@ -232,6 +259,7 @@ login-page {
   text-align: center;
   background-color: lightgreen;
   border-radius: 50px;
+  cursor: pointer;
   color: white;
   font-weight: 600;
   margin: 30px auto;

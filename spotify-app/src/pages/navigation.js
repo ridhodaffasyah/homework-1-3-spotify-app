@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Search from '../components/search/search';
 import Login from '../login';
+import { redirect } from '../spotifyendpoint';
 
 function Navigation() {
 
@@ -21,12 +22,15 @@ function Navigation() {
     return !token ? (
         <>
         <div id="app">
-            <header className="App-header">
+            <header className="App-header-2">
             <Login/>
             </header>
         </div>
         </>
     ) : <div id="app">
+            <a className="sp_button" href={redirect}>
+                <div className="logout-btn">Logout</div>
+            </a>
             <header className="App-header">
             <Search/>
             </header>

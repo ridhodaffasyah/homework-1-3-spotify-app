@@ -9,3 +9,4 @@ url += '&response_type=token';
 url += '&show_dialog=' + encodeURIComponent(true);
 
 export const endpoint = url;
+export const redirect = redirect_uri;
