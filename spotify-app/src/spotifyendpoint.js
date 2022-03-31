@@ -1,5 +1,3 @@
-// import axios from "axios";
-
 var client_id = process.env.REACT_APP_SPOTIFY_ID_CLIENT;
 var redirect_uri = 'http://localhost:3000';
 var scope = 'playlist-modify-private';

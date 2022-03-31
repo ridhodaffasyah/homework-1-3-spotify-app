@@ -1,10 +1,12 @@
 import React from 'react';
 import Button from '../button/button';
 
-function Track({track_img, track_name, track_album, track_artist, track_duration, statusSelect, removeFromList, addToList, id}) {
+
+function Playlist(track_img, track_name, track_album, track_artist, track_duration, statusSelect, removeFromList, addToList, id) {
+
     return (
         <>
-            <tbody className='table-data'>
+        <tbody className='table-data'>
                 <tr>
                     <td><img src={track_img} alt="track images" className='track-img'></img></td>
                     <td className='track-name'>{track_name}</td>
@@ -19,4 +21,4 @@ function Track({track_img, track_name, track_album, track_artist, track_duration
     )
 }
 
-export default Track;
+export default Playlist;

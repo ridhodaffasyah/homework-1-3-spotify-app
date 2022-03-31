@@ -1,11 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
 
-function Button({play}) {
+function Button({statusSelect, removeFromList, addToList, id}) {
+
+    const [isSelected, setSelected] = useState(statusSelect);
+
+    const showMessage = () => {
+        setSelected(!isSelected);
+        console.log(!isSelected);
+        if (isSelected) {
+            removeFromList(id);
+        } else {
+            addToList(id);
+        }
+    }
 
     return (
         <>
             <div className='btn-container'>
-                <a className="btn-add" href={play} target="_blank" rel="noreferrer">Play Music</a>
+                <button className="btn-add" onClick={showMessage}>{!isSelected ? "Select" : "Deselect"}</button>
             </div>
         </>
     )
