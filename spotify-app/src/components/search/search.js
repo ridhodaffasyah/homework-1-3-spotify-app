@@ -4,19 +4,17 @@ import { useState } from 'react';
 import Track from '../track/track';
 import { useEffect } from 'react';
 import axios from 'axios';
+import Playlist from '../playlist/playlist';
+import Button from '../button/button';
 
-function Search() {
+function Search({token}) {
 
     const [track, setTrack] = useState([]);
     const [query, setQuery] = useState("");
-    const [token, setToken] = useState("");
     const [selectedTrack, setSelectedTrack] = useState([]);
-
-    useEffect(() => {
-        if (window.localStorage.getItem("token")) {
-            setToken(window.localStorage.getItem("token"));
-        }
-    }, []);
+    const [user, setUser] = useState([]);
+    const [titleForm, setTitleForm] = useState("");
+    const [descForm, setDescForm] = useState("");
 
     const fetchData = () => {
         if (!query) {
@@ -32,6 +30,73 @@ function Search() {
             console.log(error);
         });
     }
+
+    const fetchUser = () => {
+        axios.get("https://api.spotify.com/v1/me", {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+        .then(res => {
+            setUser(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    const handlePlaylistInitiate = (e) => {
+        e.preventDefault();
+        if (titleForm.length < 10) {alert("Title must be at least 10 characters")};
+        let play = axios.post(`https://api.spotify.com/v1/users/${user.id}/playlists`, JSON.stringify({
+            name: titleForm,
+            description: descForm,
+            public: false
+        }), {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+        .then(res => {
+            // setPlaylist(res.data);
+            return res.data;
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
+        return play;
+    }
+
+    const addTrackToPlaylist = (playlistID) => {
+        axios.post(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`, JSON.stringify({
+            uris: selectedTrack,
+        }),{
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+        .then(res => {
+            return res.data;
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    const handlePlaylist = async (e) => {
+        e.preventDefault();
+        const playlistId = await handlePlaylistInitiate(e);
+        addTrackToPlaylist(playlistId.id);
+        alert("Playlist created");
+        clearState();
+    }
+
+    const clearState = () => {
+        setSelectedTrack([]);
+        setTitleForm("");
+        setDescForm("");
+    };
 
     const handleInput = (e) => {
         e.preventDefault();
@@ -63,8 +128,22 @@ function Search() {
         }
         return status;
     }
-    // console.log(track);
-    // console.log(selectedTrack);
+
+    const handleTitleChange = (e) => {
+        const { value } = e.target;
+        setTitleForm(value);
+    }
+
+    const handleDescChange = (e) => {
+        const { value } = e.target;
+        setDescForm(value);
+    }
+
+    useEffect(() => {
+        if (token) {
+            fetchUser();
+        }
+    }, [token]);
 
     return (
         <>
@@ -86,36 +165,35 @@ function Search() {
                     <FaSearch />
                 </button>
             </div>
+            <Playlist handleTitleChange={handleTitleChange} handleDescChange={handleDescChange} handlePlaylist={handlePlaylist}></Playlist>
             <div className='grid'>
             {track.length > 0 ?
-            <table className='table'>
-                <thead className='table-head'>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Album</th>
-                        <th>Artist</th>
-                        <th>Duration</th>
-                        <th className='no-track'></th>
-                    </tr>
-                </thead>
-                {track.map((track) => {
-                    const status = getStatus(track.uri);
-                    return (
-                        <Track key={track.uri} 
-                        track_img={track.album.images[2].url} 
-                        track_artist={track.artists[0].name} 
-                        track_album={track.album.name} 
-                        track_name={track.name}
-                        track_duration={Math.floor(track.duration_ms/1000/60)+"m "+Math.floor(((track.duration_ms/1000/60)%1)*10)+"s"}
-                        id={track.uri}
-                        statusSelect={status}
-                        addToList={addToList}
-                        removeFromList={removeFromList}/> )
-                    })}
-            </table> : 
-            <table>
-            </table>}
+                <table className='table'>
+                            <thead className='table-head'>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Album</th>
+                                    <th>Artist</th>
+                                    <th>Duration</th>
+                                    <th className='no-track'></th>
+                                </tr>
+                            </thead>
+                            {track.map((track) => {
+                                const status = getStatus(track.uri);
+                                return (
+                                    <Track key={track.uri}
+                                        track_img={track.album.images[2].url}
+                                        track_artist={track.artists[0].name}
+                                        track_album={track.album.name}
+                                        track_name={track.name}
+                                        track_duration={Math.floor(track.duration_ms / 1000 / 60) + "m " + Math.floor(((track.duration_ms / 1000 / 60) % 1) * 10) + "s"}
+                                    >
+                                        <Button statusSelect={status} removeFromList={removeFromList} addToList={addToList} id={track.uri} />
+                                    </Track>);
+                            })}
+                        </table> : <><div></div><table>
+                        </table></>}
             </div>
         </>
     )

@@ -1,7 +1,6 @@
 import React from 'react';
-import Button from '../button/button';
 
-function Track({track_img, track_name, track_album, track_artist, track_duration, statusSelect, removeFromList, addToList, id}) {
+function Track({track_img, track_name, track_album, track_artist, track_duration, children}) {
     return (
         <>
             <tbody className='table-data'>
@@ -11,8 +10,7 @@ function Track({track_img, track_name, track_album, track_artist, track_duration
                     <td>{track_album}</td>
                     <td>{track_artist}</td>
                     <td>{track_duration}</td>
-                    <td><Button statusSelect={statusSelect} removeFromList={removeFromList} 
-                    addToList={addToList} id={id}/></td>
+                    <td>{children}</td>
                 </tr>
             </tbody>
         </>

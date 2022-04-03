@@ -252,6 +252,32 @@ login-page {
   margin: 30px 50px auto auto;
 }
 
+.profile-btn {
+  width: 150px;
+  padding: 10px 0px;
+  font-size: 16px;
+  text-align: center;
+  background-color: #fefefe;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #1f1f1f;
+  font-weight: 600;
+  margin: 30px auto auto 50px;
+}
+
+.profile-btn:hover {
+  width: 150px;
+  padding: 10px 0px;
+  font-size: 16px;
+  text-align: center;
+  background-color: lightgreen;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  margin: 30px auto auto 50px;
+}
+
 .login-btn:hover {
   width: 150px;
   padding: 10px 0px;
@@ -265,6 +291,74 @@ login-page {
   margin: 30px auto;
 }
 
+.container-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
 a {
   text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.input, textarea {
+  width: 80%;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.btn-playlist {
+  width: 80%;
+  padding: 5px;
+  border-radius: 8px;
+  border: none;
+  color: #1f1f1f;
+  font-weight: 600;
+  cursor: pointer;
+  justify-content: center;
+}
+
+form {
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.btn-play {
+  width: 80%;
+  padding: 5px;
+  border-radius: 8px;
+  border: none;
+  color: #1f1f1f;
+  font-weight: 600;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.grid-playlist {
+  width: 50%;
+  margin: auto auto auto 300px;
+}
+
+.h2-playlist {
+  margin: auto 40px auto auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

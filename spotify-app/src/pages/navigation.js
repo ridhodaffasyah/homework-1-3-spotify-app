@@ -19,6 +19,8 @@ function Navigation() {
         }}, [token]
     );
 
+    // console.log(token)
+
     return !token ? (
         <>
         <div id="app">
@@ -28,11 +30,15 @@ function Navigation() {
         </div>
         </>
     ) : <div id="app">
+        <div className='container-button'>
             <a className="sp_button" href={redirect}>
                 <div className="logout-btn">Logout</div>
             </a>
+            <a className="sp_button" href={redirect}>
+                <div className="profile-btn">Profile</div>
+            </a></div>
             <header className="App-header">
-            <Search/>
+            <Search token={token}/>
             </header>
         </div>;
 }

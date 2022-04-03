@@ -1,24 +1,27 @@
 import React from 'react';
-import Button from '../button/button';
 
-
-function Playlist(track_img, track_name, track_album, track_artist, track_duration, statusSelect, removeFromList, addToList, id) {
+function Playlist({handlePlaylist, handleTitleChange, handleDescChange}) {
 
     return (
-        <>
-        <tbody className='table-data'>
-                <tr>
-                    <td><img src={track_img} alt="track images" className='track-img'></img></td>
-                    <td className='track-name'>{track_name}</td>
-                    <td>{track_album}</td>
-                    <td>{track_artist}</td>
-                    <td>{track_duration}</td>
-                    <td><Button statusSelect={statusSelect} removeFromList={removeFromList} 
-                    addToList={addToList} id={id}/></td>
-                </tr>
-            </tbody>
-        </>
+        <div className='grid-playlist'>
+        <form>
+            <h2 className='h2-playlist'>Create Playlist</h2>
+            <ul className='list'>
+                <li>
+                    <label htmlFor="title">Title Playlist</label>
+                    <input className="input" type="text" id="title" name="title" onChange={handleTitleChange} required minLength={10}/>
+                </li>
+                <li>
+                    <label htmlFor="description">Description</label>
+                    <textarea id="description" name="description" type="text" onChange={handleDescChange}/>
+                </li>
+            </ul>
+            <div className='btn-playlist'><button className="btn-play" type="submit" onClick={handlePlaylist}>Create playlist</button></div>
+            
+        </form></div>
     )
+
+
 }
 
 export default Playlist;

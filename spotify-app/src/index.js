@@ -60,7 +60,7 @@ reportWebVitals();
 
 const secret_key = process.env.REACT_APP_SPOTIFY_ID_CLIENT;
 
-console.log(secret_key);
+// console.log(secret_key);
 
 // document.getElementById("btn").onclick = function GetAPI() {
 //   getAsyncAPI();
