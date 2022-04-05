@@ -1,27 +1,30 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import {useEffect } from 'react';
 import Search from '../components/search/search';
 import Login from '../login';
 import { redirect } from '../spotifyendpoint';
+import { setUserToken } from '../store/user';
+import {useSelector, useDispatch} from 'react-redux';
 
 function Navigation() {
 
-    const [token, setToken] = useState("");
+    const dispatch = useDispatch();
+    const user_token = useSelector(state => state.user.user_token);
 
     useEffect(() => {
         const hash = window.location.hash;
         window.location.hash = "";
 
-        if(!token && hash) {
+        if(!user_token && hash) {
         const _token = hash.split("&")[0].split("=")[1];
         window.localStorage.setItem("token", _token);
-        setToken(_token)
-        }}, [token]
+        dispatch(setUserToken(_token))
+        }}, [user_token, dispatch]
     );
 
     // console.log(token)
 
-    return !token ? (
+    return !user_token ? (
         <>
         <div id="app">
             <header className="App-header-2">
@@ -38,7 +41,7 @@ function Navigation() {
                 <div className="profile-btn">Profile</div>
             </a></div>
             <header className="App-header">
-            <Search token={token}/>
+            <Search/>
             </header>
         </div>;
 }

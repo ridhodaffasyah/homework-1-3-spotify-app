@@ -1,13 +1,13 @@
 import React from 'react';
 import { FaSearch } from "react-icons/fa";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Track from '../track/track';
-import { useEffect } from 'react';
 import axios from 'axios';
 import Playlist from '../playlist/playlist';
 import Button from '../button/button';
+import { useSelector} from 'react-redux';
 
-function Search({token}) {
+function Search() {
 
     const [track, setTrack] = useState([]);
     const [query, setQuery] = useState("");
@@ -16,13 +16,17 @@ function Search({token}) {
     const [titleForm, setTitleForm] = useState("");
     const [descForm, setDescForm] = useState("");
 
+    const user_token = useSelector(state => state.user.user_token);
+
+    // console.log(user_token);
+
     const fetchData = () => {
         if (!query) {
             return;
         }
         axios.get(`https://api.spotify.com/v1/search?q=${query}&type=track`, {
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: "Bearer " + user_token
             }
         }).then((response) => {
             setTrack(response.data.tracks.items);
@@ -34,7 +38,7 @@ function Search({token}) {
     const fetchUser = () => {
         axios.get("https://api.spotify.com/v1/me", {
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: "Bearer " + user_token
             }
         })
         .then(res => {
@@ -54,7 +58,7 @@ function Search({token}) {
             public: false
         }), {
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: "Bearer " + user_token
             }
         })
         .then(res => {
@@ -73,7 +77,7 @@ function Search({token}) {
             uris: selectedTrack,
         }),{
             headers: {
-                Authorization: "Bearer " + token
+                Authorization: "Bearer " + user_token
             }
         })
         .then(res => {
@@ -140,10 +144,10 @@ function Search({token}) {
     }
 
     useEffect(() => {
-        if (token) {
+        if (user_token) {
             fetchUser();
         }
-    }, [token]);
+    }, [user_token]);
 
     return (
         <>
