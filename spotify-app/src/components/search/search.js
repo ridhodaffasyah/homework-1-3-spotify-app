@@ -147,7 +147,7 @@ function Search() {
         if (user_token) {
             fetchUser();
         }
-    }, [user_token]);
+    });
 
     return (
         <>

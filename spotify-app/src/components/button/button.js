@@ -7,7 +7,6 @@ function Button({statusSelect, removeFromList, addToList, id}) {
 
     const showMessage = () => {
         setSelected(!isSelected);
-        console.log(!isSelected);
         if (isSelected) {
             removeFromList(id);
         } else {
