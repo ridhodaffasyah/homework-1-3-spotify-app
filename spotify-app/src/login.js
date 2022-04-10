@@ -1,16 +1,15 @@
-import React from 'react';
-import {endpoint} from './spotifyendpoint';
+import React from 'react'
+import { endpoint } from './spotifyendpoint'
 
-function Login() {
-
-    return (
+function Login () {
+  return (
         <>
             <div className="button_container">
                 <img
                     src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
                     alt="logo-spotify"
                     className="logo"
-                />  
+                />
                 <a
                 className="sp_button"
                 href={endpoint}
@@ -19,7 +18,7 @@ function Login() {
                 </a>
             </div>
         </>
-    )
+  )
 }
 
-export default Login;
+export default Login

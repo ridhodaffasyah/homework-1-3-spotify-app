@@ -1,20 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-function Track({track_img, track_name, track_album, track_artist, track_duration, children}) {
-    return (
+function Track ({ trackImg, trackName, trackAlbum, trackArtist, trackDuration, children }) {
+  return (
         <>
             <tbody className='table-data'>
                 <tr>
-                    <td><img src={track_img} alt="track images" className='track-img'></img></td>
-                    <td className='track-name'>{track_name}</td>
-                    <td>{track_album}</td>
-                    <td>{track_artist}</td>
-                    <td>{track_duration}</td>
+                    <td><img src={trackImg} alt="track images" className='track-img'></img></td>
+                    <td className='track-name'>{trackName}</td>
+                    <td>{trackAlbum}</td>
+                    <td>{trackArtist}</td>
+                    <td>{trackDuration}</td>
                     <td>{children}</td>
                 </tr>
             </tbody>
         </>
-    )
+  )
 }
 
-export default Track;
+export default Track

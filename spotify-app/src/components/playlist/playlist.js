@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-function Playlist({handlePlaylist, handleTitleChange, handleDescChange}) {
-
-    return (
+function Playlist ({ handlePlaylist, handleTitleChange, handleDescChange }) {
+  return (
         <div className='grid-playlist'>
         <form>
             <h2 className='h2-playlist'>Create Playlist</h2>
@@ -17,11 +16,9 @@ function Playlist({handlePlaylist, handleTitleChange, handleDescChange}) {
                 </li>
             </ul>
             <div className='btn-playlist'><button className="btn-play" type="submit" onClick={handlePlaylist}>Create playlist</button></div>
-            
+
         </form></div>
-    )
-
-
+  )
 }
 
-export default Playlist;
+export default Playlist

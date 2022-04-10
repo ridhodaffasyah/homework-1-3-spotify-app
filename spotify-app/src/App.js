@@ -1,14 +1,13 @@
-import './App.css';
-import React from 'react';
-import Navigation from './pages/navigation';
+import './App.css'
+import React from 'react'
+import Navigation from './pages/navigation'
 
-function App() {
-
+function App () {
   return (
     <>
       <Navigation/>
     </>
-  ) 
+  )
 }
 
-export default App;
+export default App

@@ -1,26 +1,24 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react'
 
-function Button({statusSelect, removeFromList, addToList, id}) {
+function Button ({ statusSelect, removeFromList, addToList, id }) {
+  const [isSelected, setSelected] = useState(statusSelect)
 
-    const [isSelected, setSelected] = useState(statusSelect);
-
-    const showMessage = () => {
-        setSelected(!isSelected);
-        if (isSelected) {
-            removeFromList(id);
-        } else {
-            addToList(id);
-        }
+  const showMessage = () => {
+    setSelected(!isSelected)
+    if (isSelected) {
+      removeFromList(id)
+    } else {
+      addToList(id)
     }
+  }
 
-    return (
+  return (
         <>
             <div className='btn-container'>
-                <button className="btn-add" onClick={showMessage}>{!isSelected ? "Select" : "Deselect"}</button>
+                <button className="btn-add" onClick={showMessage}>{!isSelected ? 'Select' : 'Deselect'}</button>
             </div>
         </>
-    )
+  )
 }
 
-export default Button;
+export default Button
