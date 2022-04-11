@@ -6,11 +6,11 @@ function Playlist ({ handlePlaylist, handleTitleChange, handleDescChange }) {
         <form>
             <h2 className='h2-playlist'>Create Playlist</h2>
             <ul className='list'>
-                <li>
+                <li className='input-title'>
                     <label htmlFor="title">Title Playlist</label>
                     <input className="input" type="text" id="title" name="title" onChange={handleTitleChange} required minLength={10}/>
                 </li>
-                <li>
+                <li className='input-title'>
                     <label htmlFor="description">Description</label>
                     <textarea id="description" name="description" type="text" onChange={handleDescChange}/>
                 </li>

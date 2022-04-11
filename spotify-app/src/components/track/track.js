@@ -3,16 +3,18 @@ import React from 'react'
 function Track ({ trackImg, trackName, trackAlbum, trackArtist, trackDuration, children }) {
   return (
         <>
-            <tbody className='table-data'>
-                <tr>
-                    <td><img src={trackImg} alt="track images" className='track-img'></img></td>
-                    <td className='track-name'>{trackName}</td>
-                    <td>{trackAlbum}</td>
-                    <td>{trackArtist}</td>
-                    <td>{trackDuration}</td>
-                    <td>{children}</td>
-                </tr>
-            </tbody>
+            <div className='card-song'>
+                <div className='img-song'>
+                    <img src={trackImg} alt="track images" className='track-img'/>
+                </div>
+                <div className='content-song'>
+                    <div className='track-name'>{trackName}</div>
+                    <div className='album'>{trackAlbum}</div>
+                    <div className='artist'>{trackArtist}</div>
+                    <div className='duration'>{trackDuration}</div>
+                    <div className='button'>{children}</div>
+                </div>
+            </div>
         </>
   )
 }

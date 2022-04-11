@@ -146,60 +146,47 @@ function Search () {
     if (userToken) {
       fetchUser()
     }
-  })
+  }, [])
 
-  // console.log(track);
+  console.log(track)
 
   return (
         <>
-            <h1 className='title'>Track List<span>.</span></h1>
-            <div className='input'>
-                <input
-                    placeholder='Cari track favoritmu disini...'
-                    type='text'
-                    className="search-input"
-                    onChange={(e) => handleInput(e)}
-                >
-                </input>
-                <button
-                    value='Search'
-                    type='submit'
-                    className="search-button"
-                    onClick={fetchData}
-                >
-                    <FaSearch />
-                </button>
-            </div>
-            <Playlist handleTitleChange={handleTitleChange} handleDescChange={handleDescChange} handlePlaylist={handlePlaylist}></Playlist>
-            <div className='grid'>
-            {track.length > 0
-              ? <table className='table'>
-                            <thead className='table-head'>
-                                <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Album</th>
-                                    <th>Artist</th>
-                                    <th>Duration</th>
-                                    <th className='no-track'></th>
-                                </tr>
-                            </thead>
-                            {track.map((track) => {
-                              const status = getStatus(track.uri)
-                              return (
-                                    <Track key={track.uri}
-                                        trackImg={track.album.images[2].url}
-                                        trackArtist={track.artists[0].name}
-                                        trackAlbum={track.album.name}
-                                        trackName={track.name}
-                                        trackDuration={Math.floor(track.duration_ms / 1000 / 60) + 'm ' + Math.floor(((track.duration_ms / 1000 / 60) % 1) * 10) + 's'}
-                                    >
-                                        <Button statusSelect={status} removeFromList={removeFromList} addToList={addToList} id={track.uri} />
-                                    </Track>)
-                            })}
-                        </table>
-              : <><div></div><table>
-                        </table></>}
+          <div className='center-content'>
+              <h1 className='title'>Track List<span>.</span></h1>
+              <div className='input'>
+                  <input
+                      placeholder='Cari track favoritmu disini...'
+                      type='text'
+                      className="search-input"
+                      onChange={(e) => handleInput(e)}
+                  >
+                  </input>
+                  <button
+                      value='Search'
+                      type='submit'
+                      className="search-button"
+                      onClick={fetchData}
+                  >
+                      <FaSearch />
+                  </button>
+              </div>
+              <Playlist handleTitleChange={handleTitleChange} handleDescChange={handleDescChange} handlePlaylist={handlePlaylist}></Playlist>
+              <div className='grid'>
+                {track.map((track) => {
+                  const status = getStatus(track.uri)
+                  return (
+                        <Track key={track.uri}
+                            trackImg={track.album.images[0].url}
+                            trackArtist={track.artists[0].name}
+                            trackAlbum={track.album.name}
+                            trackName={track.name}
+                            trackDuration={Math.floor(track.duration_ms / 1000 / 60) + 'm ' + Math.floor(((track.duration_ms / 1000 / 60) % 1) * 10) + 's'}
+                        >
+                            <Button statusSelect={status} removeFromList={removeFromList} addToList={addToList} id={track.uri} />
+                        </Track>)
+                })}
+              </div>
             </div>
         </>
   )
