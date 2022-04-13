@@ -131,6 +131,10 @@ body {
 
 .input {
   width: 80%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
   padding: 10px;
 }
 
@@ -138,7 +142,7 @@ body {
   border: none;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  padding: 10px;
+  padding: 8px;
   width: 40%;
   color: black;
 }
@@ -148,21 +152,12 @@ body {
   color: white;
 }
 
-.search-input::placeholder {
-  border: none;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  width: 40%;
-  color: grey;
-  opacity: 0.6;
-}
-
 .search-input:focus {
   border: none;
   outline: none;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  padding: 10px;
+  padding: 8px;
   width: 40%;
   color: black;
 }
@@ -176,8 +171,13 @@ span {
   margin-left: 8px;
 }
 
+.search-icon {
+  border: none;
+  background-color: transparent;
+}
+
 .search-button {
-  background-color: rgb(105, 206, 240);
+  background-color: lightgreen;
   border: none;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -188,7 +188,7 @@ span {
 }
 
 .search-button:hover {
-  background-color: cornflowerblue;
+  background-color: #1DB954;
   border: none;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -322,6 +322,9 @@ li {
   width: 80%;
   padding: 5px;
   border-radius: 8px;
+  margin-top: 10px;
+  border: none;
+  outline: none;
 }
 
 .input-title {
@@ -332,8 +335,8 @@ li {
 }
 
 .btn-playlist {
-  width: 80%;
-  padding: 5px;
+  width: 50%;
+  padding: 10px;
   border-radius: 8px;
   border: none;
   color: #1f1f1f;
@@ -357,10 +360,23 @@ form {
 
 .btn-play {
   width: 60%;
-  padding: 5px;
+  padding: 8px 5px 8px 5px;
   border-radius: 8px;
   border: none;
+  background-color: lightgreen;
   color: #1f1f1f;
+  font-weight: 600;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.btn-play:hover {
+  width: 60%;
+  padding: 8px 5px 8px 5px;
+  border-radius: 8px;
+  border: none;
+  background-color: #1DB954;
+  color: #fefefe;
   font-weight: 600;
   cursor: pointer;
   justify-content: center;

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { FaSearch } from 'react-icons/fa'
+// import { FaSearch } from 'react-icons/fa'
 
+import { Input, IconButton } from '@chakra-ui/react'
+import { SearchIcon } from '@chakra-ui/icons'
 import Track from '../track/track'
 import axios from 'axios'
 import Playlist from '../playlist/playlist'
@@ -155,21 +157,12 @@ function Search () {
           <div className='center-content'>
               <h1 className='title'>Track List<span>.</span></h1>
               <div className='input'>
-                  <input
-                      placeholder='Cari track favoritmu disini...'
-                      type='text'
-                      className="search-input"
-                      onChange={(e) => handleInput(e)}
-                  >
-                  </input>
-                  <button
-                      value='Search'
-                      type='submit'
-                      className="search-button"
-                      onClick={fetchData}
-                  >
-                      <FaSearch />
-                  </button>
+                <Input placeholder='Cara track favoritmu..' size='md' className='search-input' onChange={e => handleInput(e)}/>
+                <IconButton
+                  className='search-icon'
+                  icon={<SearchIcon className='search-button'/>}
+                  onClick={fetchData}
+                />
               </div>
               <Playlist handleTitleChange={handleTitleChange} handleDescChange={handleDescChange} handlePlaylist={handlePlaylist}></Playlist>
               <div className='grid'>
