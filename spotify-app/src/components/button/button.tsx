@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 
-function Button ({ statusSelect, removeFromList, addToList, id }) {
-  const [isSelected, setSelected] = useState(statusSelect)
+type Props = {
+  statusSelect : boolean,
+  removeFromList : (id: string) => void,
+  addToList : (id: string) => void,
+  id: string,
+}
+
+const Button = ({ statusSelect, removeFromList, addToList, id } : Props) => {
+  const [isSelected, setSelected] = useState<boolean>(statusSelect)
 
   const showMessage = () => {
     setSelected(!isSelected)

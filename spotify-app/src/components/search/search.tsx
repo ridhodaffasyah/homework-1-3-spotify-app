@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import { FaSearch } from 'react-icons/fa'
 
 import { Input, IconButton } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
@@ -8,16 +7,32 @@ import axios from 'axios'
 import Playlist from '../playlist/playlist'
 import Button from '../button/button'
 import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
+
+interface TrackData {
+  uri: string;
+  name: string;
+  duration_ms: number;
+  artists: {
+    name: string;
+  }[];
+  album: {
+    name: string;
+    images: {
+      url: string;
+    }[];
+  };
+}
 
 function Search () {
-  const [track, setTrack] = useState([])
-  const [query, setQuery] = useState('')
-  const [selectedTrack, setSelectedTrack] = useState([])
-  const [user, setUser] = useState([])
-  const [titleForm, setTitleForm] = useState('')
-  const [descForm, setDescForm] = useState('')
+  const [track, setTrack] = useState<TrackData[]>([])
+  const [query, setQuery] = useState<string>('')
+  const [selectedTrack, setSelectedTrack] = useState<string[]>([])
+  const [userId, setUserId] = useState<string>('')
+  const [titleForm, setTitleForm] = useState<string>('')
+  const [descForm, setDescForm] = useState<string>('')
 
-  const userToken = useSelector(state => state.user.userToken)
+  const userToken = useSelector((state : RootState) => state.user.userToken)
 
   // console.log(user_token);
 
@@ -43,17 +58,19 @@ function Search () {
       }
     })
       .then(res => {
-        setUser(res.data)
+        setUserId(res.data.id)
       })
       .catch(err => {
         console.log(err)
       })
   }
 
-  const handlePlaylistInitiate = (e) => {
+  console.log(userId)
+
+  const handlePlaylistInitiate = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    if (titleForm.length < 10) { alert('Title must be at least 10 characters') };
-    const play = axios.post(`https://api.spotify.com/v1/users/${user.id}/playlists`, JSON.stringify({
+    if (titleForm.length < 10) { alert('Title must be at least 10 characters') }
+    const play = axios.post(`https://api.spotify.com/v1/users/${userId}/playlists`, JSON.stringify({
       name: titleForm,
       description: descForm,
       public: false
@@ -73,7 +90,7 @@ function Search () {
     return play
   }
 
-  const addTrackToPlaylist = (playlistID) => {
+  const addTrackToPlaylist = (playlistID: string) => {
     axios.post(`https://api.spotify.com/v1/playlists/${playlistID}/tracks`, JSON.stringify({
       uris: selectedTrack
     }), {
@@ -89,7 +106,7 @@ function Search () {
       })
   }
 
-  const handlePlaylist = async (e) => {
+  const handlePlaylist = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const playlistId = await handlePlaylistInitiate(e)
     addTrackToPlaylist(playlistId.id)
@@ -103,18 +120,19 @@ function Search () {
     setDescForm('')
   }
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     setQuery(e.target.value)
   }
 
-  const addToList = (id) => {
-    const selectedSong = selectedTrack
+  const addToList = (id: string) => {
+    let selectedSong : string[] = []
+    selectedSong = selectedTrack
     selectedSong.push(id)
     setSelectedTrack(selectedSong)
   }
 
-  const removeFromList = (id) => {
+  const removeFromList = (id: string) => {
     const selectedSong = selectedTrack
     for (let i = 0; i < selectedTrack.length; i++) {
       if (selectedTrack[i] === id) {
@@ -124,7 +142,7 @@ function Search () {
     setSelectedTrack(selectedSong)
   }
 
-  const getStatus = (id) => {
+  const getStatus = (id: string) => {
     let status = false
     for (let i = 0; i < selectedTrack.length; i++) {
       if (selectedTrack[i] === id) {
@@ -134,12 +152,12 @@ function Search () {
     return status
   }
 
-  const handleTitleChange = (e) => {
+  const handleTitleChange = (e: { target: { value: string} }) => {
     const { value } = e.target
     setTitleForm(value)
   }
 
-  const handleDescChange = (e) => {
+  const handleDescChange = (e: { target: { value: string } }) => {
     const { value } = e.target
     setDescForm(value)
   }
@@ -160,9 +178,8 @@ function Search () {
                 <Input placeholder='Cara track favoritmu..' size='md' className='search-input' onChange={e => handleInput(e)}/>
                 <IconButton
                   className='search-icon'
-                  icon={<SearchIcon className='search-button'/>}
-                  onClick={fetchData}
-                />
+                  icon={<SearchIcon className='search-button' />}
+                  onClick={fetchData} aria-label={''}                />
               </div>
               <Playlist handleTitleChange={handleTitleChange} handleDescChange={handleDescChange} handlePlaylist={handlePlaylist}></Playlist>
               <div className='grid'>

@@ -1,6 +1,12 @@
 import React from 'react'
 
-function Playlist ({ handlePlaylist, handleTitleChange, handleDescChange }) {
+type Props = {
+    handlePlaylist : React.MouseEventHandler<HTMLButtonElement>,
+    handleTitleChange : React.ChangeEventHandler<HTMLInputElement>,
+    handleDescChange : React.ChangeEventHandler<HTMLTextAreaElement>,
+}
+
+const Playlist = ({ handlePlaylist, handleTitleChange, handleDescChange } : Props) => {
   return (
         <div className='grid-playlist'>
         <form>
@@ -12,7 +18,7 @@ function Playlist ({ handlePlaylist, handleTitleChange, handleDescChange }) {
                 </li>
                 <li className='input-title'>
                     <label htmlFor="description">Description</label>
-                    <textarea id="description" name="description" type="text" onChange={handleDescChange}/>
+                    <textarea id="description" name="description" onChange={handleDescChange}/>
                 </li>
             </ul>
             <div className='btn-playlist'><button className="btn-play" type="submit" onClick={handlePlaylist}>Create playlist</button></div>

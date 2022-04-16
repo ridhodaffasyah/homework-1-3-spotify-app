@@ -6,10 +6,11 @@ import { setUserToken } from '../store/user'
 import { useSelector, useDispatch } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { redirect } from '../spotifyendpoint'
+import { RootState } from '../store/store'
 
-function Navigation () {
+const Navigation  = () => {
   const dispatch = useDispatch()
-  const userToken = useSelector(state => state.user.userToken)
+  const userToken = useSelector((state : RootState) => state.user.userToken)
 
   useEffect(() => {
     const hash = window.location.hash
