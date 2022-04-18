@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { redirect } from '../spotifyendpoint'
 import { RootState } from '../store/store'
 
-const Navigation  = () => {
+const Navigation = () => {
   const dispatch = useDispatch()
   const userToken = useSelector((state : RootState) => state.user.userToken)
 

@@ -12,7 +12,7 @@ import { RootState } from '../../store/store'
 interface TrackData {
   uri: string;
   name: string;
-  duration_ms: number;
+  durationms: number;
   artists: {
     name: string;
   }[];
@@ -24,7 +24,7 @@ interface TrackData {
   };
 }
 
-function Search () {
+const Search = () => {
   const [track, setTrack] = useState<TrackData[]>([])
   const [query, setQuery] = useState<string>('')
   const [selectedTrack, setSelectedTrack] = useState<string[]>([])
@@ -32,7 +32,8 @@ function Search () {
   const [titleForm, setTitleForm] = useState<string>('')
   const [descForm, setDescForm] = useState<string>('')
 
-  const userToken = useSelector((state : RootState) => state.user.userToken)
+  const getUserToken = (state : RootState) => state.user.userToken
+  const userToken = useSelector(getUserToken)
 
   // console.log(user_token);
 
@@ -106,18 +107,18 @@ function Search () {
       })
   }
 
+  const clearState = () => {
+    setSelectedTrack([])
+    setTitleForm('')
+    setDescForm('')
+  }
+
   const handlePlaylist = async (e: { preventDefault: () => void }) => {
     e.preventDefault()
     const playlistId = await handlePlaylistInitiate(e)
     addTrackToPlaylist(playlistId.id)
     alert('Playlist created')
     clearState()
-  }
-
-  const clearState = () => {
-    setSelectedTrack([])
-    setTitleForm('')
-    setDescForm('')
   }
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -171,34 +172,34 @@ function Search () {
   console.log(track)
 
   return (
-        <>
-          <div className='center-content'>
-              <h1 className='title'>Track List<span>.</span></h1>
-              <div className='input'>
-                <Input placeholder='Cara track favoritmu..' size='md' className='search-input' onChange={e => handleInput(e)}/>
-                <IconButton
-                  className='search-icon'
-                  icon={<SearchIcon className='search-button' />}
-                  onClick={fetchData} aria-label={''}                />
-              </div>
-              <Playlist handleTitleChange={handleTitleChange} handleDescChange={handleDescChange} handlePlaylist={handlePlaylist}></Playlist>
-              <div className='grid'>
-                {track.map((track) => {
-                  const status = getStatus(track.uri)
-                  return (
-                        <Track key={track.uri}
-                            trackImg={track.album.images[0].url}
-                            trackArtist={track.artists[0].name}
-                            trackAlbum={track.album.name}
-                            trackName={track.name}
-                            trackDuration={Math.floor(track.duration_ms / 1000 / 60) + 'm ' + Math.floor(((track.duration_ms / 1000 / 60) % 1) * 10) + 's'}
-                        >
-                            <Button statusSelect={status} removeFromList={removeFromList} addToList={addToList} id={track.uri} />
-                        </Track>)
-                })}
-              </div>
+        <div className='center-content'>
+            <h1 className='title'>Track List<span>.</span></h1>
+            <div className='input'>
+              <Input placeholder='Cara track favoritmu..' size='md' className='search-input' onChange={e => handleInput(e)}/>
+              <IconButton
+                className='search-icon'
+                icon={<SearchIcon className='search-button' />}
+                onClick={fetchData} aria-label={''}/>
             </div>
-        </>
+            <Playlist handleTitleChange={handleTitleChange} handleDescChange={handleDescChange} handlePlaylist={handlePlaylist}></Playlist>
+            <div className='grid'>
+              {track.map((track) => {
+                const status = getStatus(track.uri)
+                return (
+                      <Track
+                          data-testid='tracks'
+                          key={track.uri}
+                          trackImg={track.album.images[0].url}
+                          trackArtist={track.artists[0].name}
+                          trackAlbum={track.album.name}
+                          trackName={track.name}
+                          trackDuration={Math.floor(track.durationms / 1000 / 60) + 'm ' + Math.floor(((track.durationms / 1000 / 60) % 1) * 10) + 's'}
+                      >
+                          <Button statusSelect={status} removeFromList={removeFromList} addToList={addToList} id={track.uri} />
+                      </Track>)
+              })}
+            </div>
+          </div>
   )
 }
 
