@@ -1,5 +1,5 @@
 const clientId = process.env.REACT_APP_SPOTIFY_ID_CLIENT as string
-const redirectUri = 'https://homework-generasi-gigih-spotify-app-final-2f72ceeri.vercel.app/'
+const redirectUri = 'https://homework-generasi-gigih-spotify-app-final-2f72ceeri.vercel.app'
 const scope = 'playlist-modify-private'
 let url = 'https://accounts.spotify.com/authorize'
 url += '?client_id=' + encodeURIComponent(clientId)
